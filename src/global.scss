@@ -1,0 +1,14 @@
+$white: hsl(0, 0%, 100%);
+$darkCyan: hsl(183, 100%, 15%);
+$lightInputColor: hsl(189, 41%, 97%);
+$strongCyan: hsl(172, 67%, 45%);
+$resetBtnColor: hsl(183, 100%, 28%);
+$greyishCyan: hsl(186, 14%, 43%);
+
+$width: 768px;
+
+@mixin mobile {
+  @media (max-width: #{$width}) {
+    @content
+  }
+}

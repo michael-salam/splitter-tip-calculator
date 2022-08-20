@@ -1,0 +1,231 @@
+@import '../global.scss';
+
+$width: 768px;
+
+@mixin mobile {
+  @media (max-width: #{$width}) {
+    @content
+  }
+}
+
+.wrapper {
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 0;
+  font-family: 'Space Mono', monospace;
+
+  @include mobile {
+    width: 100%;
+  }
+
+  .heading {
+    margin-bottom: 4rem;
+
+    @include mobile {
+      margin-bottom: 0;
+    }
+  }
+
+  .container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: $white;
+    border-radius: 1.5rem;
+    padding: 2.2rem;
+
+    @include mobile {
+      flex-direction: column;
+      padding: 1.4rem;
+    }
+
+    &-left {
+      flex: 5;
+      margin-right: 2rem;
+
+      @include mobile {
+        margin: 0 2rem 2.2rem 2rem;
+        width: 100%;
+      }
+
+      .input-with-outline {
+        transition: all 0.3s;
+        outline: 2px solid $white;
+        font-weight: bold;
+
+        &:focus {
+          outline: 2px solid $strongCyan;
+          color: $darkCyan;
+        }
+      }
+
+      .input-with-icon {
+        position: relative;
+
+        label {
+          color: $greyishCyan;
+        }
+
+
+        .icon {
+          position: absolute;
+          bottom: 1rem;
+          left: 1.2rem;
+        }
+      }
+
+      .tip-percent {
+        .options {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-template-rows: repeat(2, 2.8rem);
+          gap: 10px;
+
+          .label-active {
+            background: $strongCyan;
+            color: $darkCyan;
+          }
+
+          .label-inactive {
+            background: $darkCyan;
+
+            &:hover {
+              background: $strongCyan;
+              ;
+            }
+          }
+
+          label,
+          input {
+            transition: all 0.2s;
+            cursor: pointer;
+            border-radius: 5px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 24px;
+
+            input {
+              appearance: none;
+            }
+          }
+
+          .custom-input {
+            width: 100%;
+            font-size: 20px;
+            text-align: center;
+            background: $lightInputColor;
+            color: $darkCyan;
+
+            @include mobile {
+              font-size: 18px;
+            }
+          }
+        }
+      }
+    }
+
+    &-right {
+      flex: 4;
+      margin-left: 2rem;
+      background: $darkCyan;
+      border-radius: 1rem;
+      align-self: stretch;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+
+      @include mobile {
+        margin-left: 0;
+      }
+
+      .result-container {
+        width: 100%;
+
+        .tip-amount,
+        .total {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 1rem;
+
+          .result-display {
+            font-weight: 700;
+            color: $strongCyan;
+            width: 60%;
+            text-align: right;
+          }
+        }
+      }
+
+      .reset-button {
+        width: 100%;
+        padding: 0.8rem 0;
+        border-radius: 5px;
+        border: none;
+        font-weight: bold;
+        color: hsl(183, 100%, 17%);
+        cursor: pointer;
+        transition: all 0.2s;
+
+        &.active {
+          background: hsl(172, 67%, 45%);
+          color: hsl(183, 100%, 15%);
+
+          &:hover {
+            background: lighten($strongCyan, 15%)
+          }
+        }
+
+        &.inactive {
+          background: hsl(183, 100%, 20%);
+          color: hsl(183, 100%, 17%);
+        }
+      }
+    }
+
+    input[type=text] {
+      font-size: 24px;
+      font-family: 'Space Mono', monospace;
+      text-align: right;
+      padding: 0.6rem 1rem;
+      border: none;
+      background: $lightInputColor;
+      border-radius: 8px;
+      width: 100%;
+      color: $greyishCyan;
+    }
+
+    .label {
+      display: block;
+      margin: 1.8rem 0rem 0.5rem 0rem;
+      color: $greyishCyan;
+
+      .main {
+        color: $white;
+      }
+
+      .sub {
+        color: $resetBtnColor;
+        font-size: 0.9rem;
+        margin-top: 0.4rem;
+      }
+    }
+  }
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+    background-color: #eee;
+    width: 100%;
+    text-align: center;
+  }
+}
